@@ -1,14 +1,19 @@
 (function () {
   Tent.CollectionView = Tent.View.extend({
-    constructor: function () {
+    constructor: function (options) {
       var that = this;
+
+      options = _.extend({
+        modelView: Tent.ModelView
+      }, options);
+
       Tent.View.prototype.constructor.apply(this, arguments);
       this._modelViews = {};
       this.bindTo(this.collection, 'add', this._collectionAdd);
       this.bindTo(this.collection, 'remove', this._collectionRemove);
 
       _.each(this.collection.models, function (model) {
-        that._modelViews[model.cid] = new Tent.ModelView({ model: model });
+        that._modelViews[model.cid] = new options.modelView({ model: model });
       });
 
       this.render();

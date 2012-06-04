@@ -2,6 +2,8 @@ describe("Tent.CollectionView", function () {
   var collection, model, view;
 
   beforeEach(function () {
+    Dummy = {};
+    Dummy.ModelView = Tent.ModelView.extend({});
     model = new Tent.Model({ name: 'Jonathan', age: 26 });
     collection = new Backbone.Collection();
     collection.add(model);
@@ -17,17 +19,17 @@ describe("Tent.CollectionView", function () {
     var renderSpy;
 
     beforeEach(function () {
-      spyOn(Tent, 'ModelView');
+      spyOn(Dummy, 'ModelView');
       renderSpy = spyOn(Tent.CollectionView.prototype, 'render');
-      view = new Tent.CollectionView({ collection: collection });
-    });
-
-    it("should create model views", function () {
-      expect(Tent.ModelView).toHaveBeenCalled();
+      view = new Tent.CollectionView({ collection: collection, modelView: Dummy.ModelView });
     });
 
     it("should immediately render itself", function () {
       expect(renderSpy).toHaveBeenCalled();
+    });
+
+    it("should an accept and create a model view type", function () {
+      expect(Dummy.ModelView).toHaveBeenCalled();
     });
   });
 
