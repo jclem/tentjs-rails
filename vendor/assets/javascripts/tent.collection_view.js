@@ -28,6 +28,8 @@
       _.each(this._modelViews, function (view) {
         that.$el.append(view.render().el);
       });
+
+      return this;
     },
 
     _collectionAdd: function () {
