@@ -14,12 +14,12 @@ src_files:
     - spec/dependencies/jquery-min.js
     - spec/dependencies/underscore-min.js
     - spec/dependencies/backbone-min.js
-    - vendor/assets/tent.js
-    - vendor/assets/tent.dispatcher.js
-    - vendor/assets/tent.pub_sub.js
-    - vendor/assets/tent.app.js
-    - vendor/assets/tent.view.js
-    - vendor/assets/**/*.js
+    - vendor/assets/javascripts/tent_object.js
+    - vendor/assets/javascripts/tent.dispatcher.js
+    - vendor/assets/javascripts/tent.pub_sub.js
+    - vendor/assets/javascripts/tent.app.js
+    - vendor/assets/javascripts/tent.view.js
+    - vendor/assets/javascripts/**/*.js
 
 # stylesheets
 #
