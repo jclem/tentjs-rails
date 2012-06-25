@@ -56,6 +56,14 @@ An object can publish events to the dispatcher using `publish`.
 view.publish('some:event', anArgument, anotherArgument);
 ```
 
+### Using Tent.PubSub
+
+To include Tent.PubSub in an object prototype:
+
+```
+_.extend(Something.prototype, Tent.PubSub);
+```
+
 ## Tent.View
 
 ### Binding to an object
