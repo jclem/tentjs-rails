@@ -15,3 +15,15 @@ And then execute:
 Or install it yourself as:
 
     $ gem install tentjs-rails
+
+## Tent.View
+
+### Binding to an object
+
+By binding to an object using the `view.bindTo()` function, one can ensure that the binding is released when the view is closed using Tent's `view.close()` function.
+
+```
+view.bindTo(view.model, 'change', view.doSomething);
+```
+
+`bindTo` limits you to using the calling object as the context, which makes unbinding easier. If you must use another object as the context for a binding callback, use Backbone's `on` function.
