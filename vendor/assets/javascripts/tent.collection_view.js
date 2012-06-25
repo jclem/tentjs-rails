@@ -3,8 +3,6 @@
     initialize: function (options) {
       var that = this;
 
-      Tent.View.prototype.initialize.apply(this, arguments)
-
       options = _.extend({
         modelView: Tent.ModelView
       }, options);

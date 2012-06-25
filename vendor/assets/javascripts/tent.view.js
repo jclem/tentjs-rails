@@ -1,10 +1,8 @@
 (function () {
   Tent.View = Backbone.View.extend({
-    initialize: function () {
-      this._bindings = [];
-    },
-
     bindTo: function (object, event, callback) {
+      this._bindings = this._bindings || [];
+
       object.on(event, callback, this);
 
       if (!_.contains(this._bindings)) {
@@ -24,6 +22,8 @@
     },
 
     unbindFrom: function (object) {
+      this._bindings = this._bindings || [];
+
       object.off(null, null, this);
 
       this._bindings = _.reject(this._bindings, function (binding) {
@@ -32,6 +32,8 @@
     },
 
     unbindAll: function () {
+      this._bindings = this._bindings || [];
+
       var that = this;
 
       _.each(this._bindings, function (binding) {
