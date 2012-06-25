@@ -16,6 +16,14 @@ Or install it yourself as:
 
     $ gem install tentjs-rails
 
+## Using Tent
+
+Rather than extending Backbone prototypes directly, Tent builds on top of them. That way, you can still create vanilla Backbone View, Models, and Collections without the additions that Tent provides. So, creating a view that uses Tent's extensions looks like this:
+
+```
+view = new Tent.View();
+```
+
 ## Tent.View
 
 ### Binding to an object
