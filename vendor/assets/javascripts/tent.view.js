@@ -5,7 +5,7 @@
 
       object.on(event, callback, this);
 
-      if (!_.contains(this._bindings)) {
+      if (!_.contains(this._bindings, object)) {
         this._bindings.push(object);
       }
     },
