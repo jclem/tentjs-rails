@@ -1,7 +1,6 @@
 (function () {
   Tent.View = Backbone.View.extend({
-    constructor: function () {
-      Backbone.View.prototype.constructor.apply(this, arguments);
+    initialize: function () {
       this._bindings = [];
     },
 
