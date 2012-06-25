@@ -53,7 +53,7 @@ view.unsubscribe();
 An object can publish events to the dispatcher using `publish`.
 
 ```
-view.publish('some:event`, anArgument, anotherArgument);
+view.publish('some:event', anArgument, anotherArgument);
 ```
 
 ## Tent.View
