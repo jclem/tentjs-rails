@@ -24,6 +24,18 @@ Rather than extending Backbone prototypes directly, Tent builds on top of them. 
 view = new Tent.View();
 ```
 
+## Tent.App
+
+`Tent.App` is a very basic module that includes an internal reference to `Tent.Dispatcher` and fires a `tent:app:started` event when its `start` function is called.
+
+```
+window.Application = new Tent.App();
+```
+
+## Tent.Collection
+
+`Tent.Collection` is exactly like a `Backbone.Collection`, except that it has a `serialize` function which called `JSON.stringify` on the result of its `toJSON` function.
+
 ## Tent.PubSub
 
 Tent includes a handy global event dispatcher called `Tent.Dispatcher`. Anything that includes the `Tent.PubSub` module is able to communicate with this dispatcher like so:
@@ -38,8 +50,7 @@ view.subscribe('some:event', view.doSomething)
 
 ### Unsubscribing from events
 
-Calling `unsubscribe` with an event and a callback unsubscribes that callback from the specified event. Specifying a callback with no event unsubscribes that callback from all events. Specifying an event with no callback unsubscribes all callbacks from that event for the calling object.
-Calling `unsubscribe` with no arguments unsubscribes the calling object completely from the dispatcher events.
+Calling `unsubscribe` with an event and a callback unsubscribes that callback from the specified event. Specifying a callback with no event unsubscribes that callback from all events. Specifying an event with no callback unsubscribes all callbacks from that event for the calling object. Calling `unsubscribe` with no arguments unsubscribes the calling object completely from the dispatcher events.
 
 ```
 view.unsubscribe('an:event', view.doSomething);
