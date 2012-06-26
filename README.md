@@ -32,9 +32,9 @@ view = new Tent.View();
 window.Application = new Tent.App();
 ```
 
-## Tent.Collection
+## Tent.Collection and Tent.Model
 
-`Tent.Collection` is exactly like a `Backbone.Collection`, except that it has a `serialize` function which called `JSON.stringify` on the result of its `toJSON` function.
+`Tent.Collection` and `Tent.Model` are exactly like a `Backbone.Collection` and `Backbone.Model`, respectively, except that they each have a `serialize` function which calls `JSON.stringify` on the result of their `toJSON` functions.
 
 ## Tent.PubSub
 
@@ -112,3 +112,33 @@ Calling `view.close()` will do a fiew things:
 2. Call `view.unbindAll()` to get rid of bindings.
 3. Call `view.off()` to get rid of DOM bindings.
 4. Call `view.remove()` to remove the view DOM element itself.
+
+## Tent.ModelView
+
+### Initializing
+
+`Tent.ModelView` has its own `initialize` function, so you'll want to make sure that when overriding it, you'll generally want to still use the built-in function:
+
+```
+Application.SomeModelView = Tent.ModelView.extend({
+  initialize: function () {
+    Tent.ModelView.prototype.initialize.apply(this, arguments);
+    // ...
+  }
+});
+```
+When a `Tent.ModelView` initializes, it sets an attribute called `data-model-cid` on its element whose value is the `cid` of the instance of `Tent.Model`* that was passed into the constructor:
+
+```
+var model = new Tent.Model();
+var view = new Tent.ModelView({ model: model });
+view.el.getAttribute('data-model-cid'); // === model.cid
+```
+
+The element also gets an attribute called `data-model-attributes` that contains a serialized version of all of the model's attributes (note that this uses the `Tent.Model.prototype.serialize` function).
+
+* `Tent.ModelView` will only initialize properly when passed an instance a `Tent.Model`.
+
+### Changing the model
+
+`Tent.ModelView` will update its `data-model-attributes` and re-render when the model's `change` event is fired.
