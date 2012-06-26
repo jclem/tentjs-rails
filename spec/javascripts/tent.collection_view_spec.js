@@ -12,7 +12,7 @@ describe("Tent.CollectionView", function () {
 
   it("should be able to retrieve its model views", function () {
     expect(_.keys(view._modelViews).length).toEqual(1);
-    expect(view._modelViews[model.cid].$el.attr('data-tent-model-cid')).toEqual(model.cid);
+    expect(view._modelViews[model.cid].$el.attr('data-model-cid')).toEqual(model.cid);
   });
 
   describe("when instantiated", function () {
@@ -59,13 +59,13 @@ describe("Tent.CollectionView", function () {
         });
 
         it("should append the model to the view", function () {
-          expect(view.$el.find('[data-tent-model-cid="' + newModel.cid + '"]').length).toEqual(1);
+          expect(view.$el.find('[data-model-cid="' + newModel.cid + '"]').length).toEqual(1);
         });
       });
 
       describe("when the collection view has not been rendered", function () {
         it("should not append the model to the view", function () {
-          expect(view.$el.find('[data-tent-model-cid="' + newModel.cid + '"]').length).toEqual(0);
+          expect(view.$el.find('[data-model-cid="' + newModel.cid + '"]').length).toEqual(0);
         });
       });
     });

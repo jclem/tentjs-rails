@@ -8,18 +8,18 @@ describe("Tent.ModelView", function () {
 
   describe("when instantiated", function () {
     it("should store a reference to its cid", function () {
-      expect(view.el.getAttribute('data-tent-model-cid')).toEqual(model.cid);
+      expect(view.el.getAttribute('data-model-cid')).toEqual(model.cid);
     });
 
     it("should store its model's attributes in its element", function () {
-      expect(view.el.getAttribute('data-tent-model-attributes')).toEqual(JSON.stringify(model.attributes));
+      expect(view.el.getAttribute('data-model-attributes')).toEqual(JSON.stringify(model.attributes));
     });
   });
 
   describe("when its model is changed", function () {
     it("should update its model's attributes in its element", function () {
       model.set('name', 'Clem');
-      expect(view.el.getAttribute('data-tent-model-attributes')).toEqual(JSON.stringify(model.attributes));
+      expect(view.el.getAttribute('data-model-attributes')).toEqual(JSON.stringify(model.attributes));
     });
 
     it("should render itself", function () {
