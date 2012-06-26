@@ -24,10 +24,6 @@ describe("Tent.CollectionView", function () {
       view = new Tent.CollectionView({ collection: collection, modelView: Dummy.ModelView });
     });
 
-    it("should immediately render itself", function () {
-      expect(renderSpy).toHaveBeenCalled();
-    });
-
     it("should an accept and create a model view type", function () {
       expect(Dummy.ModelView).toHaveBeenCalled();
     });
@@ -57,8 +53,20 @@ describe("Tent.CollectionView", function () {
         expect(view._modelViews[newModel.cid]).toBeDefined();
       });
 
-      it("should append the model to the view", function () {
-        expect(view.$el.find('[data-tent-model-cid="' + newModel.cid + '"]').length).toEqual(1);
+      describe("when the collection view has been rendered", function () {
+        beforeEach(function () {
+          view.render();
+        });
+
+        it("should append the model to the view", function () {
+          expect(view.$el.find('[data-tent-model-cid="' + newModel.cid + '"]').length).toEqual(1);
+        });
+      });
+
+      describe("when the collection view has not been rendered", function () {
+        it("should not append the model to the view", function () {
+          expect(view.$el.find('[data-tent-model-cid="' + newModel.cid + '"]').length).toEqual(0);
+        });
       });
     });
 

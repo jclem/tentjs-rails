@@ -14,8 +14,6 @@
       _.each(this.collection.models, function (model) {
         that._modelViews[model.cid] = new options.modelView({ model: model });
       });
-
-      this.render();
     },
 
     close: function () {
@@ -24,6 +22,8 @@
       _.each(this._modelViews, function (view) {
         view.close();
       });
+
+      this._isRendered = false;
     },
 
     render: function () {
@@ -33,13 +33,18 @@
         that.$el.append(view.render().el);
       });
 
+      this._isRendered = true;
+
       return this;
     },
 
     _collectionAdd: function () {
       var model = this.collection.last();
       this._modelViews[model.cid] = new Tent.ModelView({ model: model });
-      this.$el.append(this._modelViews[model.cid].render().el);
+
+      if (this._isRendered) {
+        this.$el.append(this._modelViews[model.cid].render().el);
+      }
     },
 
     _collectionRemove: function (model) {
