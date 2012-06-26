@@ -1,4 +1,4 @@
-# Tentjs::Rails
+# tentjs-rails
 
 Tent.js is a lightweight structure built on top of Backbone.js
 
