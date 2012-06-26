@@ -137,7 +137,7 @@ view.el.getAttribute('data-model-cid'); // === model.cid
 
 The element also gets an attribute called `data-model-attributes` that contains a serialized version of all of the model's attributes (note that this uses the `Tent.Model.prototype.serialize` function).
 
-* `Tent.ModelView` will only initialize properly when passed an instance a `Tent.Model`.
+\* `Tent.ModelView` will only initialize properly when passed an instance a `Tent.Model`.
 
 ### Changing the model
 
